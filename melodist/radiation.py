@@ -150,7 +150,7 @@ def potential_radiation(
     dates = pd.DatetimeIndex(dates)
     dates_hour = np.array(dates.hour)
     dates_minute = np.array(dates.minute)
-    day_of_year = np.array(dates.dayofyear)
+    day_of_year = np.array(dates.day_of_year)
 
     # compute solar decline in rad
     solar_decline = tropic_of_cancer * np.cos(

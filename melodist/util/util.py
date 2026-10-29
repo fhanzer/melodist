@@ -386,8 +386,8 @@ def daily_from_hourly(df):
 
     if 'temp' in df:
         df_daily['temp'] = df.temp.resample('D').mean()
-        df_daily['tmin'] = df.temp.groupby(df.temp.index.date).min()
-        df_daily['tmax'] = df.temp.groupby(df.temp.index.date).max()
+        df_daily['tmin'] = df.temp.groupby(df.temp.index.normalize()).min()
+        df_daily['tmax'] = df.temp.groupby(df.temp.index.normalize()).max()
 
     if 'precip' in df:
         df_daily['precip'] = df.precip.resample('D').sum()
@@ -399,10 +399,10 @@ def daily_from_hourly(df):
         df_daily['hum'] = df.hum.resample('D').mean()
 
     if 'hum' in df:
-        df_daily['hum_min'] = df.hum.groupby(df.hum.index.date).min()
+        df_daily['hum_min'] = df.hum.groupby(df.hum.index.normalize()).min()
 
     if 'hum' in df:
-        df_daily['hum_max'] = df.hum.groupby(df.hum.index.date).max()
+        df_daily['hum_max'] = df.hum.groupby(df.hum.index.normalize()).max()
 
     if 'wind' in df:
         df_daily['wind'] = df.wind.resample('D').mean()

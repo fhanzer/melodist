@@ -135,7 +135,7 @@ def calculate_month_hour_precip_mean(hourly_data_obs):
     daily_precip_yesno.index.name = None
     hum = hourly_data_obs.hum
     hum.index.name = None
-    wet = daily_precip_yesno.loc[hum.index.date].values
+    wet = daily_precip_yesno.loc[hum.index.normalize()].values
     mhp_mean = hum.groupby([hum.index.month, hum.index.hour, wet]).mean()
 
     return mhp_mean
